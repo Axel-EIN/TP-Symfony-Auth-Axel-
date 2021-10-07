@@ -23,6 +23,7 @@
               <a class="nav-link {% if app.request.attributes.get('_route') == 'liste_utilisateurs' %}active{% endif %}" href="{{ path('liste_utilisateurs') }}">Liste Utilisateurs</a>
             {% endif %}
             <a class="nav-link {% if app.request.attributes.get('_route') == 'liste_articles' %}active{% endif %}" href="{{ path('liste_articles') }}">Liste Articles</a>
+            <a class="nav-link {% if app.request.attributes.get('_route') == 'contact' %}active{% endif %}" href="{{ path('contact') }}">Contactez-Nous</a>
 
             {% if app.user is empty %}
               <a class="nav-link {% if app.request.attributes.get('_route') == 'login' %}active{% endif %}" href="{{ path('login') }}">Se connecter</a>
