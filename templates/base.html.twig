@@ -18,14 +18,17 @@
         <nav class="nav justify-content-center">
             <a class="nav-link {% if app.request.attributes.get('_route') == 'accueil' %}active{% endif %}" href="{{ path('accueil') }}">Accueil</a>
             <a class="nav-link {% if app.request.attributes.get('_route') == 'cgu' %}active{% endif %}" href="{{ path('cgu') }}">CGU</a>
+
+            {% if is_granted('ROLE_ADMIN') %}
+              <a class="nav-link {% if app.request.attributes.get('_route') == 'liste_utilisateurs' %}active{% endif %}" href="{{ path('liste_utilisateurs') }}">Liste Utilisateurs</a>
+            {% endif %}
+            <a class="nav-link {% if app.request.attributes.get('_route') == 'liste_articles' %}active{% endif %}" href="{{ path('liste_articles') }}">Liste Articles</a>
+
             {% if app.user is empty %}
               <a class="nav-link {% if app.request.attributes.get('_route') == 'login' %}active{% endif %}" href="{{ path('login') }}">Se connecter</a>
-              <a class="nav-link {% if app.request.attributes.get('_route') == 'register' %}active{% endif %}" href="{{ path('register') }}">S'inscrire</a>
             {% else %}
               <a class="nav-link" href="{{ path('logout') }}">Se déconnecter</a>
             {% endif %}
-            <a class="nav-link {% if app.request.attributes.get('_route') == 'liste_utilisateurs' %}active{% endif %}" href="{{ path('liste_utilisateurs') }}">Liste Utilisateurs</a>
-            <a class="nav-link {% if app.request.attributes.get('_route') == 'liste_articles' %}active{% endif %}" href="{{ path('liste_articles') }}">Liste Articles</a>
 
         </nav>
 

@@ -22,7 +22,9 @@
                             <p class="card-text">{{ article.contenu }}</p>
                             <p class="card-text">Ecrit par : <strong>{{ article.auteur.pseudo }}</strong> <small class="text-muted">le {{ article.datePublication ? article.datePublication|date('Y-m-d H:i:s') : '' }}</small></p>
                             <a class="btn btn-secondary" href="{{ path('article_show', {'id': article.id}) }}">Voir</a>
-                            <a class="btn btn-warning" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                             {% if is_granted('ROLE_ECRIVAIN') %}
+                                <a class="btn btn-warning" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

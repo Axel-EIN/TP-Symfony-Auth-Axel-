@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block html_title %}S'Inscrire{% endblock %}
+{% block html_title %}S'inscrire{% endblock %}
 
-{% block titre %}S'Inscrire{% endblock %}
+{% block titre %}S'inscrire{% endblock %}
 
 {% block body %}
 
@@ -14,5 +14,7 @@
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn btn-primary">S'Inscrire</button>
+        <a class="nav-link {% if app.request.attributes.get('_route') == 'login' %}active{% endif %}" href="{{ path('login') }}">Vous avez déjà un compte? Se connecter</a>
+
     {{ form_end(registrationForm) }}
 {% endblock %}

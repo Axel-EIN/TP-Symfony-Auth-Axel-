@@ -24,6 +24,7 @@ class ArticleController extends AbstractController
     #[Route('/new', name: 'article_new', methods: ['GET','POST'])]
     public function new(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ECRIVAIN');
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -53,6 +54,7 @@ class ArticleController extends AbstractController
     #[Route('/{id}/edit', name: 'article_edit', methods: ['GET','POST'])]
     public function edit(Request $request, Article $article): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ECRIVAIN');
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
@@ -71,6 +73,7 @@ class ArticleController extends AbstractController
     #[Route('/{id}', name: 'article_delete', methods: ['POST'])]
     public function delete(Request $request, Article $article): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);

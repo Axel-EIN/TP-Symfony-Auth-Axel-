@@ -39,5 +39,8 @@
     <button class="btn btn-lg btn-primary mt-5" type="submit">
         Se connecter
     </button>
+
+    <a class="nav-link {% if app.request.attributes.get('_route') == 'register' %}active{% endif %}" href="{{ path('register') }}">Vous n'avez pas de compte? S'inscrire</a>
+    
 </form>
 {% endblock %}
