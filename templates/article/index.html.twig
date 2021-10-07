@@ -6,7 +6,7 @@
 
 
 {% block body %}
-    {% if is_granted('ROLE_ECRIVAIN') || is_granted('ROLE_ADMIN') %}
+    {% if is_granted('ROLE_ECRIVAIN') or is_granted('ROLE_ADMIN') %}
         <a class="btn btn-primary mb-3" href="{{ path('article_new') }}">Créer un nouvel Article</a>
     {% endif %}
 
@@ -24,7 +24,7 @@
                             <p class="card-text">{{ article.contenu }}</p>
                             <p class="card-text">Ecrit par : <strong>{{ article.auteur.pseudo }}</strong> <small class="text-muted">le {{ article.datePublication ? article.datePublication|date('Y-m-d H:i:s') : '' }}</small></p>
                             <a class="btn btn-secondary" href="{{ path('article_show', {'id': article.id}) }}">Voir</a>
-                            {% if is_granted('ROLE_ECRIVAIN') || is_granted('ROLE_ADMIN') %}
+                            {% if is_granted('ROLE_ECRIVAIN') or is_granted('ROLE_ADMIN') %}
                                 <a class="btn btn-warning" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
                             {% endif %}
                         </div>
