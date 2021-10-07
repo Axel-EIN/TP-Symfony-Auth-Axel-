@@ -5,7 +5,7 @@
 {% block titre %}Accueil{% endblock %}
 
 {% block body %}
-    <h2 class="my-3">Bienvenue <strong>visiteur</strong>,</h2>
+    <h2 class="my-3">Bienvenue <strong>{% if app.user %}{{ app.user.pseudo }}{% else %}visiteur{% endif %}</strong>,</h2>
     <p class="ml-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem recusandae nam adipisci excepturi, eum tenetur ducimus, enim laborum libero incidunt, quibusdam maiores amet id! Magni ipsa deserunt maxime error cumque.
 Nihil eius consectetur voluptatibus quaerat laborum hic saepe impedit quia quo modi, amet id, aliquid facilis neque ullam dolorem praesentium dolorum tempore, quasi rerum accusantium. Dolor, at vel. Voluptatibus, soluta?
 Fugit nemo accusantium praesentium laboriosam error nulla veniam reiciendis inventore necessitatibus vero harum labore tempore voluptatum aliquid soluta, cupiditate odio perspiciatis sit aut nisi corrupti minus. Consequuntur quas impedit ab.

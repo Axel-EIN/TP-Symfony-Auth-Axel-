@@ -18,7 +18,12 @@
         <nav class="nav justify-content-center">
             <a class="nav-link {% if app.request.attributes.get('_route') == 'accueil' %}active{% endif %}" href="{{ path('accueil') }}">Accueil</a>
             <a class="nav-link {% if app.request.attributes.get('_route') == 'cgu' %}active{% endif %}" href="{{ path('cgu') }}">CGU</a>
-            <a class="nav-link disabled" href="#">A venir</a>
+            {% if app.user is empty %}
+              <a class="nav-link {% if app.request.attributes.get('_route') == 'login' %}active{% endif %}" href="{{ path('login') }}">Se connecter</a>
+              <a class="nav-link {% if app.request.attributes.get('_route') == 'register' %}active{% endif %}" href="{{ path('register') }}">S'inscrire</a>
+            {% else %}
+              <a class="nav-link" href="{{ path('logout') }}">Se déconnecter</a>
+            {% endif %}
         </nav>
 
         <h1 class="display-4 mt-5">{% block titre %}{% endblock %}</h1>
