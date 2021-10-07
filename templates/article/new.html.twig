@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block html_title %}Créer un Nouvel Article{% endblock %}
+
+{% block titre %}Créer un Nouvel Article{% endblock %}
+
+
+{% block body %}
+
+    {{ include('article/_form.html.twig') }}
+
+    <a href="{{ path('liste_articles') }}">Retourner à la liste des Articles</a>
+{% endblock %}

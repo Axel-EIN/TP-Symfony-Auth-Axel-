@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block html_title %}Modifier un Utilisateur{% endblock %}
+
+{% block titre %}Modifier un Utilisateur{% endblock %}
+
+{% block body %}
+
+    {{ include('utilisateur/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+    {{ include('utilisateur/_delete_form.html.twig') }}
+    <a href="{{ path('liste_utilisateurs') }}">Retourner à la liste des utilisateurs</a>
+{% endblock %}

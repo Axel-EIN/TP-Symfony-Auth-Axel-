@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block html_title %}{{ article.titre }}{% endblock %}
+
+{% block body %}
+
+    <div class="card">
+        <img class="card-img-top" src="{{ article.image }}" alt="...">
+        <div class="card-body">
+            <h1 class="card-title">{{ article.titre }}</h1>
+            <p class="card-text">{{ article.contenu }}</p>
+            <p class="card-text">Ecrit par : <strong>{{ article.auteur.pseudo }}</strong> <small>le {{ article.datePublication ? article.datePublication|date('Y-m-d H:i:s') : '' }}</small></p>
+            <hr>
+            <section class="mx-5">
+                <h2>Commentaires :</h2>
+
+                {% for commentaire in article.commentaires %}
+                    Posté par : <strong>{{commentaire.auteur.pseudo}}</strong> <small>le {{commentaire.datePublication ? commentaire.datePublication|date('Y-m-d H:i:s') : '' }}</small>
+                    <br/><br/>            
+                    <p>{{commentaire.contenu}}</p>
+                    <br/><br/>
+                {% else %}
+                    Pas encore de commentaires !
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+
+    <a class="btn btn-warning" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+    {{ include('article/_delete_form.html.twig') }}
+    <a href="{{ path('liste_articles') }}">Retourner à la liste des Articles</a>
+
+{% endblock %}

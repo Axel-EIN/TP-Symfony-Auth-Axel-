@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block html_title %}Liste des Articles{% endblock %}
+
+{% block titre %}Liste des Articles{% endblock %}
+
+
+{% block body %}
+    <a class="btn btn-primary mb-3" href="{{ path('article_new') }}">Créer un nouvel Article</a>
+
+    <div class="row">
+
+        {% for article in articles %}
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ article.image }}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.titre }}</h5>
+                            <p class="card-text">{{ article.contenu }}</p>
+                            <p class="card-text">Ecrit par : <strong>{{ article.auteur.pseudo }}</strong> <small class="text-muted">le {{ article.datePublication ? article.datePublication|date('Y-m-d H:i:s') : '' }}</small></p>
+                            <a class="btn btn-secondary" href="{{ path('article_show', {'id': article.id}) }}">Voir</a>
+                            <a class="btn btn-warning" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            Pas encore d'article!
+        {% endfor %}
+    
+    </div>
+
+
+{% endblock %}
